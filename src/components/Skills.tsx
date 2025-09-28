@@ -1,4 +1,3 @@
-import React from 'react'
 
 // skill data with logo icons
 const skills = [

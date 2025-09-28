@@ -1,5 +1,4 @@
-// Contact.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import emailjs from "@emailjs/browser";
 
 export default function Contact() {
@@ -9,11 +8,15 @@ export default function Contact() {
     message: "",
   });
 
-  const handleChange = (e) => {
+  // 👇 Explicit event typing for inputs + textarea
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // 👇 Explicit event typing for form submit
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     emailjs
