@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const scrollTo = (id: string) => {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -15,15 +15,15 @@ export default function Navbar() {
         Ali Raza Khan
       </div>
 
-      {/* Hamburger for mobile */}
-      <div className="hamburger" onClick={() => setOpen(!open)}>
+      {/* Hamburger */}
+      <div className={`hamburger ${open ? 'open' : ''}`} onClick={() => setOpen(!open)}>
         <span></span>
         <span></span>
         <span></span>
       </div>
 
       {/* Nav Buttons */}
-      <div className={`nav-buttons ${open ? "open" : ""}`}>
+      <div className={`nav-buttons ${open ? 'open' : ''}`}>
         {links.map((link) => (
           <button
             key={link}
