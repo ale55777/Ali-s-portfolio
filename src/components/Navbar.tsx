@@ -11,9 +11,7 @@ export default function Navbar() {
   return (
     <nav className="nav glass sexy-nav">
       {/* Logo */}
-      <div className="logo sexy-logo" onClick={() => scrollTo('hero')}>
-        Ali Raza Khan
-      </div>
+      
 
       {/* Hamburger */}
       <div className={`hamburger ${open ? 'open' : ''}`} onClick={() => setOpen(!open)}>
