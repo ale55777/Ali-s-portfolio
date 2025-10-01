@@ -23,7 +23,7 @@ body {
 /* ✨ Navbar */
 /* 🌈 Navbar Wrapper */
 /* 🌌 Navbar Container */
-/* Base Navbar */
+/* ================= Navbar Base ================= */
 .sexy-nav {
   display: flex;
   justify-content: space-between;
@@ -34,14 +34,14 @@ body {
   padding: 14px 28px;
   margin: 20px auto;
   max-width: 1200px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-/* Logo Neon */
+/* ================= Logo ================= */
 .sexy-logo {
   font-weight: 900;
   font-size: 26px;
@@ -58,29 +58,29 @@ body {
 }
 .sexy-logo:hover {
   transform: scale(1.15) rotate(-2deg);
-  text-shadow: 0 0 12px #ffdd00,
-               0 0 24px #ff007f,
-               0 0 36px #00fff7;
+  text-shadow: 0 0 12px rgba(255, 221, 0, 0.8),
+               0 0 24px rgba(255, 0, 127, 0.6),
+               0 0 36px rgba(0, 255, 247, 0.7);
 }
 
-/* Desktop Buttons */
+/* ================= Nav Buttons ================= */
 .nav-buttons {
   display: flex;
   gap: 18px;
 }
 .nav-btn {
   padding: 12px 24px;
-  border-radius: 999px;
+  border-radius: 999px; /* pill */
   border: none;
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   color: #f4f4f4;
   cursor: pointer;
   transition: all 0.35s ease;
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -93,68 +93,78 @@ body {
               0 0 22px #00fff7;
 }
 
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
-  cursor: pointer;
-}
-.hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  border-radius: 2px;
-  background: #ffdd00;
-  transition: 0.3s;
-}
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Mobile Nav */
-@media (max-width: 768px) {
-  .nav-buttons {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 220px;
-    height: 100%;
-    background: rgba(15,15,30,0.95);
-    flex-direction: column;
-    padding: 6rem 1rem;
-    gap: 1rem;
-    transition: right 0.3s ease;
-    z-index: 99;
-  }
-  .nav-buttons.open {
-    right: 0;
-  }
-  .nav-btn {
-    width: 100%;
-    font-size: 1.1rem;
-  }
-  .hamburger {
-    display: flex;
-  }
-  .sexy-logo {
-    font-size: 22px;
-  }
-}
-
-/* Gradient Animation */
+/* ================= Gradient Animation ================= */
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* ================= Hamburger Icon ================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.hamburger div {
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger.open div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open div:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ================= Mobile Responsive ================= */
+@media (max-width: 768px) {
+  .sexy-nav {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
+
+  .sexy-logo {
+    font-size: 22px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .hamburger {
+    display: flex;
+    z-index: 101;
+  }
+
+  .nav-buttons {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 240px;
+    height: 100%;
+    background: rgba(15, 15, 30, 0.95);
+    flex-direction: column;
+    padding: 6rem 1rem;
+    gap: 1.5rem;
+    transition: right 0.3s ease;
+    z-index: 99;
+  }
+
+  .nav-buttons.open {
+    right: 0;
+  }
+
+  .nav-btn {
+    width: 100%;
+    font-size: 1.1rem;
+    text-align: center;
+  }
 }
 
 /*
