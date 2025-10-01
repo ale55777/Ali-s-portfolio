@@ -16,7 +16,6 @@ export default function App() {
       <About />
       <Skills />
       <Experience />
-    
       <Projects />
       <Node/>
       <Contact />

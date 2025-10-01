@@ -7,10 +7,9 @@ export default function Hero() {
         {/* Left Side: Text Content */}
         <div className="hero-content glass-card">
           <h1 className="name-gradient">ALI RAZA KHAN</h1>
-          <p className="subtitle">Computer Scientist | MERN </p>
+          <p className="subtitle">AI ENGINEER | M E R N </p>
 
           <div className="profile-block">
-            <h3 className="profile-title">PROFILE</h3>
             <p className="profile-text">
               As a <span className="highlight">Computer Science student</span> with a background from 
               <span className="highlight"> FAST Islamabad</span>, I possess a strong foundation in both 
@@ -22,7 +21,7 @@ export default function Hero() {
               <span className="highlight"> exceptional results</span>. 
               If you're seeking a programmer who is <span className="highlight">committed</span>, 
               <span className="highlight"> skilled</span>, and ready to <span className="highlight">make an impact</span>, 
-              then look no further — you've found the right candidate.
+              then look no further you've found the right candidate.
             </p>
           </div>
         </div>
