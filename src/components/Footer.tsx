@@ -10,7 +10,7 @@ export default function Footer() {
 
       <div className="flex gap-6">
         <a
-          href="www.linkedin.com/in/ali-farooq-khan-89666b236"
+          href="www.linkedin.com/in/muhammad-ali-raza-khan-89666b236"
           target="_blank"
           rel="noopener noreferrer"
           className="social-btn linkedin"

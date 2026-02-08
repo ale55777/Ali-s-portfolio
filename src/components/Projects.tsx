@@ -29,11 +29,7 @@ export default function Projects() {
           desc: "A short-video sharing platform with modern UI and interactive features.",
           link: "https://github.com/ale55777/REACT-JS.git"
         },
-        {
-          title: "TikTak (TikTok Clone)",
-          desc: "A short-video sharing platform with modern UI and interactive features.",
-          link: "https://github.com/ale55777/KFC-Clone.git"
-        }
+
       ]
     },
     {
@@ -135,60 +131,60 @@ export default function Projects() {
       category: "Python Algorithms",
       items: [
         {
-      title: "Bubble Sort",
-      desc: "Classic bubble sort algorithm implementation in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Bucket Sort",
-      desc: "Bucket sort implementation for sorting numbers in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Counting Sort",
-      desc: "Efficient counting sort algorithm in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Heap Sort",
-      desc: "Heap sort algorithm implemented in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Insertion Sort",
-      desc: "Insertion sort algorithm example in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Merge Sort",
-      desc: "Merge sort algorithm implemented in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Quick Sort",
-      desc: "Quick sort algorithm implementation in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Radix Sort",
-      desc: "Radix sort example in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Selection Sort",
-      desc: "Selection sort algorithm in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Shell Sort",
-      desc: "Shell sort implementation in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    },
-    {
-      title: "Sorting Comparison",
-      desc: "Compare performance of different sorting algorithms in Python.",
-      link: "https://github.com/ale55777/My-Python.git"
-    }
+          title: "Bubble Sort",
+          desc: "Classic bubble sort algorithm implementation in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Bucket Sort",
+          desc: "Bucket sort implementation for sorting numbers in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Counting Sort",
+          desc: "Efficient counting sort algorithm in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Heap Sort",
+          desc: "Heap sort algorithm implemented in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Insertion Sort",
+          desc: "Insertion sort algorithm example in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Merge Sort",
+          desc: "Merge sort algorithm implemented in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Quick Sort",
+          desc: "Quick sort algorithm implementation in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Radix Sort",
+          desc: "Radix sort example in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Selection Sort",
+          desc: "Selection sort algorithm in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Shell Sort",
+          desc: "Shell sort implementation in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        },
+        {
+          title: "Sorting Comparison",
+          desc: "Compare performance of different sorting algorithms in Python.",
+          link: "https://github.com/ale55777/My-Python.git"
+        }
       ]
     }
   ]
