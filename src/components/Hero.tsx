@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="hero-visual">
           <div className="image-wrapper">
             <img 
-              src="d.jpg"   // 👉 put your image path here
+              src="Ali.jpg"   // 👉 put your image path here
               alt="Ali Raza Khan"
               className="profile-img"
             />
