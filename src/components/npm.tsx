@@ -23,7 +23,7 @@ export default function NpmPackages() {
               className="github-btn npm-btn"
               href={pkg.link}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               View on NPM ↗
             </a>

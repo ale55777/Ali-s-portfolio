@@ -1,4 +1,6 @@
 
+import type { KeyboardEvent } from 'react'
+
 export default function Projects() {
   const projects = [
     {
@@ -28,6 +30,11 @@ export default function Projects() {
           title: "TikTak (TikTok Clone)",
           desc: "A short-video sharing platform with modern UI and interactive features.",
           link: "https://github.com/ale55777/REACT-JS.git"
+        },
+{
+          title: "AI-Debugger",
+          desc: "A AI Code Debugger that tells the user about errors and changes need to be done .",
+          link: "https://github.com/ale55777/AI-Debugger-MERN.git"
         },
 
       ]
@@ -113,7 +120,7 @@ export default function Projects() {
       ]
     },
     {
-      category: "Flutter",
+      category: "Flutter & Kotlin",
       items: [
         {
           title: "FitBuds",
@@ -123,7 +130,7 @@ export default function Projects() {
         {
           title: "Weather App ",
           desc: "Get Updated with Weather.",
-          link: "https://github.com/ale55777/Flutter"
+          link: "https://github.com/ale55777/Weather-App-Latest-"
         }
       ]
     },
@@ -189,29 +196,69 @@ export default function Projects() {
     }
   ]
 
+  const openProjectLink = (link: string) => {
+    window.open(link, '_blank', 'noopener,noreferrer')
+  }
+
+  const handleProjectKeyDown = (event: KeyboardEvent<HTMLDivElement>, link: string) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      openProjectLink(link)
+    }
+  }
+
   return (
     <section id="projects" className="section projects">
       <h2 className="section-title">Projects</h2>
       <div className="proj-wrap">
         {projects.map((cat, i) => (
-          <div key={i} className="proj-category">
+          <div
+            key={i}
+            className={`proj-category ${cat.category === 'Python Algorithms' ? 'algorithm-category' : ''}`}
+          >
             <h3 className="proj-cat-title">{cat.category}</h3>
-            <div className="proj-grid">
-              {cat.items.map((p, j) => (
-                <div className="proj-card" key={j}>
+            {cat.category === 'Python Algorithms' ? (
+              <div className="algorithm-line" aria-label="Python algorithm examples">
+                {cat.items.map((p, j) => (
+                  <a
+                    className="algorithm-chip"
+                    key={j}
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${p.title} on GitHub`}
+                  >
+                    {p.title}
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <div className="proj-grid">
+                {cat.items.map((p, j) => (
+                <div
+                  className="proj-card"
+                  key={j}
+                  role="link"
+                  tabIndex={0}
+                  onClick={() => openProjectLink(p.link)}
+                  onKeyDown={(event) => handleProjectKeyDown(event, p.link)}
+                  aria-label={`Open ${p.title} on GitHub`}
+                >
                   <div className="proj-title">{p.title}</div>
                   <p>{p.desc}</p>
                   <a
                     className="github-btn"
                     href={p.link}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    onClick={(event) => event.stopPropagation()}
                   >
                     GitHub ↗
                   </a>
                 </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
