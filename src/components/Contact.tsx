@@ -12,10 +12,26 @@ const WHATSAPP_LINK = "https://wa.me/923041659109?text=Hi%20Ali!%20I%20saw%20you
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [userLocation, setUserLocation] = useState("Fetching location...");
 
-  // ✅ Initialize EmailJS once when component mounts (required for v4+)
+  // ✅ Initialize EmailJS + fetch user IP location on mount
   useEffect(() => {
     emailjs.init(PUBLIC_KEY);
+
+    // Free IP geolocation — no API key needed
+    fetch("https://ipapi.co/json/")
+      .then((res) => res.json())
+      .then((data) => {
+        const loc = [
+          data.city,
+          data.region,
+          data.country_name,
+        ]
+          .filter(Boolean)
+          .join(", ");
+        setUserLocation(loc || "Unknown Location");
+      })
+      .catch(() => setUserLocation("Unknown Location"));
   }, []);
 
   const handleChange = (
@@ -24,16 +40,31 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // ✅ Format: Sunday, August 17, 2026 at 12:30 AM (PKT)
+  const getSubmissionDate = () => {
+    return new Date().toLocaleString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
 
     emailjs
       .send(SERVICE_ID, TEMPLATE_ID, {
-        from_name:  form.name,
-        from_email: form.email,
-        from_phone: form.phone,
-        message:    form.message,
+        from_name:       form.name,
+        from_email:      form.email,
+        from_phone:      form.phone,
+        message:         form.message,
+        submission_date: getSubmissionDate(),   // ✅ Auto date/time
+        user_location:   userLocation,          // ✅ Auto IP location
       })
       .then(() => {
         setStatus("success");
