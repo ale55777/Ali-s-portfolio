@@ -1,267 +1,158 @@
+import { useState } from 'react';
 
-import type { KeyboardEvent } from 'react'
+type Project = {
+  title: string;
+  desc: string;
+  tech: string[];
+  github: string;
+  category: string;
+};
+
+const projects: Project[] = [
+  // React / MERN
+  {
+    title: 'AI Debugger',
+    desc: 'AI-powered code debugger that identifies errors and suggests fixes in real time.',
+    tech: ['React', 'Node.js', 'OpenAI', 'MongoDB'],
+    github: 'https://github.com/ale55777/AI-Debugger-MERN.git',
+    category: 'MERN',
+  },
+  {
+    title: 'E-Commerce Platform',
+    desc: 'Full-stack marketplace with product browsing, cart system, and secure checkout.',
+    tech: ['React', 'Express', 'MongoDB', 'Stripe'],
+    github: 'https://github.com/ale55777/E-Commerce-Web.git',
+    category: 'MERN',
+  },
+  {
+    title: 'Gemini Clone',
+    desc: 'AI-powered chatbot application inspired by Google Gemini with streaming responses.',
+    tech: ['React', 'Gemini API', 'CSS'],
+    github: 'https://github.com/ale55777/REACT-JS.git',
+    category: 'MERN',
+  },
+  {
+    title: 'Garage.com — Car Buy/Sell',
+    desc: 'A platform for users to buy, sell, and manage car listings easily.',
+    tech: ['React', 'Node.js', 'MongoDB'],
+    github: 'https://github.com/ale55777/REACT-JS.git',
+    category: 'MERN',
+  },
+  {
+    title: 'Weather Live',
+    desc: 'Real-time weather forecast app with clean UI and dynamic icons.',
+    tech: ['React', 'OpenWeather API', 'CSS'],
+    github: 'https://github.com/ale55777/WeatherApp.git',
+    category: 'MERN',
+  },
+  {
+    title: 'TikTak — TikTok Clone',
+    desc: 'Short-video sharing platform with modern UI and interactive features.',
+    tech: ['React', 'Firebase', 'Node.js'],
+    github: 'https://github.com/ale55777/REACT-JS.git',
+    category: 'MERN',
+  },
+  // Flutter
+  {
+    title: 'FitBuds — Fitness App',
+    desc: 'Cross-platform fitness tracking app with workout plans and Firebase backend.',
+    tech: ['Flutter', 'Firebase', 'Dart'],
+    github: 'https://github.com/ale55777/Flutter/blob/main/FITS_BUDS.zip',
+    category: 'Flutter',
+  },
+  {
+    title: 'Weather App Mobile',
+    desc: 'Flutter mobile app fetching live weather data with a clean dashboard UI.',
+    tech: ['Flutter', 'API', 'Dart'],
+    github: 'https://github.com/ale55777/Weather-App-Latest-',
+    category: 'Flutter',
+  },
+  // C++
+  {
+    title: 'Hospital Management System',
+    desc: 'Manages patient records, doctor schedules, and hospital operations.',
+    tech: ['C++', 'OOP', 'File I/O'],
+    github: 'https://github.com/ale55777/C-Projects.git',
+    category: 'C++',
+  },
+  {
+    title: 'Grocery Store Management',
+    desc: 'Handles billing, stock management, and customer transactions.',
+    tech: ['C++', 'OOP', 'DSA'],
+    github: 'https://github.com/ale55777/C-Projects.git',
+    category: 'C++',
+  },
+  {
+    title: 'Graph Path Algorithms',
+    desc: "Implements Prim's, Dijkstra's & Kruskal's algorithms with visual output.",
+    tech: ['C++', 'Graph Theory', 'DSA'],
+    github: 'https://github.com/ale55777/C-Projects.git',
+    category: 'C++',
+  },
+  // Python
+  {
+    title: 'Sorting Algorithm Suite',
+    desc: 'Complete collection of sorting algorithms with performance comparison benchmarks.',
+    tech: ['Python', 'Algorithms', 'Big-O'],
+    github: 'https://github.com/ale55777/My-Python.git',
+    category: 'Python',
+  },
+];
+
+const FILTERS = ['All', 'MERN', 'Flutter', 'C++', 'Python'];
 
 export default function Projects() {
-  const projects = [
-    {
-      category: "React Web Apps",
-      items: [
-        {
-          title: "E-Commerce App",
-          desc: "A full-stack marketplace with product browsing, cart, and secure checkout.",
-          link: "https://github.com/ale55777/E-Commerce-Web.git"
-        },
-        {
-          title: "Weather_Live",
-          desc: "Real-time weather forecast app with clean UI and dynamic icons.",
-          link: "https://github.com/ale55777/WeatherApp.git"
-        },
-        {
-          title: "Gemini Clone App",
-          desc: "AI-powered chatbot application inspired by Google Gemini.",
-          link: "https://github.com/ale55777/REACT-JS.git"
-        },
-        {
-          title: "Garage.com Car Buy/Sell App",
-          desc: "A platform for users to buy, sell, and manage car listings easily.",
-          link: "https://github.com/ale55777/REACT-JS.git"
-        },
-        {
-          title: "TikTak (TikTok Clone)",
-          desc: "A short-video sharing platform with modern UI and interactive features.",
-          link: "https://github.com/ale55777/REACT-JS.git"
-        },
-{
-          title: "AI-Debugger",
-          desc: "A AI Code Debugger that tells the user about errors and changes need to be done .",
-          link: "https://github.com/ale55777/AI-Debugger-MERN.git"
-        },
+  const [active, setActive] = useState('All');
 
-      ]
-    },
-    {
-      category: "JavaScript & TypeScript",
-      items: [
-        {
-          title: "ATM Machine",
-          desc: "A console-based ATM system built with TypeScript.",
-          link: "https://github.com/ale55777/NodeProjects"
-        },
-        {
-          title: "Countdown Timer",
-          desc: "A timer app that demonstrates async programming in JS.",
-          link: "https://github.com/ale55777/NodeProjects"
-        },
-        {
-          title: "Currency Converter",
-          desc: "A CLI-based currency converter using live rates.",
-          link: "https://github.com/ale55777/NodeProjects"
-        },
-        {
-          title: "To-Do List",
-          desc: "Manage daily tasks efficiently with local storage support.",
-          link: "https://github.com/ale55777/NodeProjects"
-        },
-        {
-          title: "Number Guess Game",
-          desc: "Fun number guessing game built with TypeScript.",
-          link: "https://github.com/ale55777/NodeProjects"
-        },
-        {
-          title: "Counter Word",
-          desc: "Counts words and characters in text input.",
-          link: "https://github.com/ale55777/NodeProjects"
-        }
-      ]
-    },
-    {
-      category: "C++",
-      items: [
-        {
-          title: "Cricket Match Simulator",
-          desc: "Simulates a live cricket match with score tracking and match outcomes.",
-          link: "https://github.com/ale55777/C-Projects.git"
-        },
-        {
-          title: "Grocery Store Management System",
-          desc: "Handles billing, stock management, and customer transactions.",
-          link: "https://github.com/ale55777/C-Projects.git"
-        },
-        {
-          title: "Hospital Management System Project",
-          desc: "Manages patient records, doctor schedules, and hospital operations.",
-          link: "https://github.com/ale55777/C-Projects.git"
-        },
-        {
-          title: "Helpline Management System",
-          desc: "Organizes and tracks customer queries and helpline services.",
-          link: "https://github.com/ale55777/C-Projects.git"
-        },
-        {
-          title: "Scholarship Management System",
-          desc: "Manages student scholarship applications and disbursements.",
-          link: "https://github.com/ale55777/C-Projects.git"
-        },
-        {
-          title: "Retail Supermarket Management",
-          desc: "Provides sales, inventory, and billing management for supermarkets.",
-          link: "https://github.com/ale55777/C-Projects.git"
-        },
-        {
-          title: "Interactive Todo List",
-          desc: "Lets users add, update, and manage daily tasks interactively.",
-          link: "https://github.com/ale55777/C-Projects.git"
-        },
-        {
-          title: "Graph Path Algorithms",
-          desc: "Implements Prim’s, Dijkstra’s & Kruskal’s algorithms for graphs.",
-          link: "https://github.com/ale55777/C-Projects.git"
-        }
-      ]
-    },
-    {
-      category: "Flutter & Kotlin",
-      items: [
-        {
-          title: "FitBuds",
-          desc: "Cross-platform fitness app with Firebase backend.",
-          link: "https://github.com/ale55777/Flutter/blob/main/FITS_BUDS.zip"
-        },
-        {
-          title: "Weather App ",
-          desc: "Get Updated with Weather.",
-          link: "https://github.com/ale55777/Weather-App-Latest-"
-        }
-      ]
-    },
-    {
-      category: "Python Algorithms",
-      items: [
-        {
-          title: "Bubble Sort",
-          desc: "Classic bubble sort algorithm implementation in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Bucket Sort",
-          desc: "Bucket sort implementation for sorting numbers in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Counting Sort",
-          desc: "Efficient counting sort algorithm in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Heap Sort",
-          desc: "Heap sort algorithm implemented in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Insertion Sort",
-          desc: "Insertion sort algorithm example in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Merge Sort",
-          desc: "Merge sort algorithm implemented in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Quick Sort",
-          desc: "Quick sort algorithm implementation in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Radix Sort",
-          desc: "Radix sort example in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Selection Sort",
-          desc: "Selection sort algorithm in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Shell Sort",
-          desc: "Shell sort implementation in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        },
-        {
-          title: "Sorting Comparison",
-          desc: "Compare performance of different sorting algorithms in Python.",
-          link: "https://github.com/ale55777/My-Python.git"
-        }
-      ]
-    }
-  ]
-
-  const openProjectLink = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer')
-  }
-
-  const handleProjectKeyDown = (event: KeyboardEvent<HTMLDivElement>, link: string) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      openProjectLink(link)
-    }
-  }
+  const filtered = active === 'All'
+    ? projects
+    : projects.filter((p) => p.category === active);
 
   return (
-    <section id="projects" className="section projects">
+    <section id="projects" className="section">
       <h2 className="section-title">Projects</h2>
-      <div className="proj-wrap">
-        {projects.map((cat, i) => (
-          <div
-            key={i}
-            className={`proj-category ${cat.category === 'Python Algorithms' ? 'algorithm-category' : ''}`}
+      <div className="section-line"></div>
+
+      {/* Filter buttons */}
+      <div className="projects-filter">
+        {FILTERS.map((f) => (
+          <button
+            key={f}
+            className={`filter-btn ${active === f ? 'active' : ''}`}
+            onClick={() => setActive(f)}
           >
-            <h3 className="proj-cat-title">{cat.category}</h3>
-            {cat.category === 'Python Algorithms' ? (
-              <div className="algorithm-line" aria-label="Python algorithm examples">
-                {cat.items.map((p, j) => (
-                  <a
-                    className="algorithm-chip"
-                    key={j}
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Open ${p.title} on GitHub`}
-                  >
-                    {p.title}
-                  </a>
-                ))}
-              </div>
-            ) : (
-              <div className="proj-grid">
-                {cat.items.map((p, j) => (
-                <div
-                  className="proj-card"
-                  key={j}
-                  role="link"
-                  tabIndex={0}
-                  onClick={() => openProjectLink(p.link)}
-                  onKeyDown={(event) => handleProjectKeyDown(event, p.link)}
-                  aria-label={`Open ${p.title} on GitHub`}
-                >
-                  <div className="proj-title">{p.title}</div>
-                  <p>{p.desc}</p>
-                  <a
-                    className="github-btn"
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(event) => event.stopPropagation()}
-                  >
-                    GitHub ↗
-                  </a>
-                </div>
-                ))}
-              </div>
-            )}
+            {f}
+          </button>
+        ))}
+      </div>
+
+      {/* Project cards */}
+      <div className="projects-grid">
+        {filtered.map((p, i) => (
+          <div key={i} className="project-card hud-card">
+            <div className="project-header">
+              <h3 className="project-title">{p.title}</h3>
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-github"
+                onClick={(e) => e.stopPropagation()}
+              >
+                GitHub ↗
+              </a>
+            </div>
+
+            <p className="project-desc">{p.desc}</p>
+
+            <div className="tech-tags">
+              {p.tech.map((t) => (
+                <span key={t} className="tech-tag">{t}</span>
+              ))}
+            </div>
           </div>
         ))}
       </div>
     </section>
-  )
+  );
 }

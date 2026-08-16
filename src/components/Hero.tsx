@@ -1,42 +1,108 @@
+import { useState, useEffect } from 'react';
+
+const ROLES = [
+  'AI ENGINEER',
+  'MERN STACK DEVELOPER',
+  'FULL-STACK DEVELOPER',
+  'FREELANCE DEV',
+];
 
 export default function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayed, setDisplayed]   = useState('');
+  const [deleting, setDeleting]     = useState(false);
+
+  useEffect(() => {
+    const role = ROLES[roleIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!deleting && displayed.length < role.length) {
+      timeout = setTimeout(() => setDisplayed(role.slice(0, displayed.length + 1)), 80);
+    } else if (!deleting && displayed.length === role.length) {
+      timeout = setTimeout(() => setDeleting(true), 1800);
+    } else if (deleting && displayed.length > 0) {
+      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 45);
+    } else if (deleting && displayed.length === 0) {
+      setDeleting(false);
+      setRoleIndex((i) => (i + 1) % ROLES.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayed, deleting, roleIndex]);
+
   return (
     <header id="hero" className="hero">
       <div className="hero-inner">
-        
-        {/* Left Side: Text Content */}
-        <div className="hero-content glass-card">
-          <h1 className="name-gradient">ALI RAZA KHAN</h1>
-          <p className="subtitle">AI ENGINEER | M E R N </p>
 
-          <div className="profile-block">
-            <p className="profile-text">
-              As a <span className="highlight">Computer Science student</span> with a background from 
-              <span className="highlight"> FAST Islamabad</span>, I possess a strong foundation in both 
-              <span className="highlight"> front-end</span> and <span className="highlight"> back-end development</span>. 
-              I am eager to showcase my <span className="highlight">skills</span> and contribute 
-              meaningfully to the <span className="highlight">programming world</span>. 
-              With a continuous dedication to <span className="highlight">coding</span>, I am confident in my 
-              ability to tackle <span className="highlight">challenging projects</span> and deliver 
-              <span className="highlight"> exceptional results</span>. 
-              If you're seeking a programmer who is <span className="highlight">committed</span>, 
-              <span className="highlight"> skilled</span>, and ready to <span className="highlight">make an impact</span>, 
-              then look no further you've found the right candidate.
+        {/* ── Left: Terminal Window ── */}
+        <div className="terminal-window">
+          <div className="terminal-header">
+            <span className="t-dot red"></span>
+            <span className="t-dot yellow"></span>
+            <span className="t-dot green"></span>
+            <span className="terminal-title">ali_raza_khan — bash</span>
+          </div>
+          <div className="terminal-body">
+            <div className="terminal-line">
+              <span className="prompt">~/portfolio $</span> whoami
+            </div>
+
+            <h1 className="hero-name">ALI RAZA KHAN</h1>
+
+            <div className="hero-role">
+              <span>{displayed}</span>
+              <span className="cursor"></span>
+            </div>
+
+            <p className="hero-bio">
+              <span className="hl">Computer Science graduate</span> from{' '}
+              <span className="hl">FAST Islamabad</span> with a passion for building
+              intelligent, scalable applications. Specialized in{' '}
+              <span className="hl">MERN Stack</span> &amp;{' '}
+              <span className="hl">AI Engineering</span>.
+              Currently delivering full-stack solutions for{' '}
+              <span className="hl">UK-based clients</span> &amp;{' '}
+              <span className="hl">WEBSCARE Technologies</span>.
             </p>
+
+            <div className="hero-btns">
+              <a href="#contact" className="btn-primary">
+                ⚡ Hire Me
+              </a>
+              <a
+                href="https://github.com/ale55777"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-outline"
+              >
+                ↗ GitHub
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Right Side: Neon Image */}
+        {/* ── Right: HUD Image Frame ── */}
         <div className="hero-visual">
-          <div className="image-wrapper">
-            <img 
-              src="Ali.jpg"   // 👉 put your image path here
-              alt="Ali Raza Khan"
-              className="profile-img"
-            />
+          <div className="hud-frame">
+            <div className="hud-ring"></div>
+            <div className="hud-ring"></div>
+
+            <div className="profile-img-wrap">
+              <img src="Ali.jpeg" alt="Ali Raza Khan" className="profile-img" />
+            </div>
+
+            {/* Scan overlay */}
+            <div className="hud-scan"></div>
+
+            {/* HUD stat badges */}
+            <div className="hud-stat tl">CGPA: 3.5</div>
+            <div className="hud-stat tr">FAST ISB</div>
+            <div className="hud-stat bl">MERN ✓</div>
+            <div className="hud-stat br">AI ✓</div>
           </div>
         </div>
+
       </div>
     </header>
-  )
+  );
 }

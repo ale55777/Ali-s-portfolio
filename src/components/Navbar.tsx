@@ -5,13 +5,13 @@ const scrollTo = (id: string) => {
 };
 
 export default function Navbar() {
-  const links = ["about", "skills", "experience", "projects", "contact"];
+  const links = ['about', 'skills', 'services', 'experience', 'projects', 'contact'];
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="nav glass sexy-nav">
+    <nav className="sexy-nav">
       {/* Logo */}
-      <div className="logo sexy-logo" onClick={() => scrollTo('hero')}>
+      <div className="sexy-logo" onClick={() => scrollTo('hero')}>
         Ali Raza Khan
       </div>
 
@@ -28,12 +28,9 @@ export default function Navbar() {
           <button
             key={link}
             className="nav-btn"
-            onClick={() => {
-              scrollTo(link);
-              setOpen(false); // close menu on click
-            }}
+            onClick={() => { scrollTo(link); setOpen(false); }}
           >
-            {link.charAt(0).toUpperCase() + link.slice(1)}
+            {link}
           </button>
         ))}
       </div>

@@ -80,15 +80,16 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section contact">
-      <h2>Get In Touch</h2>
+      <h2 className="section-title">Contact</h2>
+      <div className="section-line"></div>
       <p className="contact-subtitle">
-        Have a project in mind? Let's build something amazing together 🚀
+        // INITIATE_TRANSMISSION — let's build something great
       </p>
 
       <div className="contact-layout">
 
         {/* ─── LEFT: Contact Info Panel ─── */}
-        <div className="contact-info-panel glass-card">
+        <div className="contact-info-panel hud-card">
           <h3 className="info-panel-title">Contact Details</h3>
 
           <div className="info-item">
@@ -151,7 +152,7 @@ export default function Contact() {
         </div>
 
         {/* ─── RIGHT: Contact Form ─── */}
-        <form onSubmit={handleSubmit} className="contact-form glass-card" noValidate>
+        <form onSubmit={handleSubmit} className="contact-form hud-card" noValidate>
           <h3 className="info-panel-title">Send a Message</h3>
 
           <div className="form-row">
