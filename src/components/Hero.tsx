@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+
 const ROLES = [
   'AI ENGINEER',
   'MERN STACK DEVELOPER',
@@ -9,8 +10,8 @@ const ROLES = [
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
-  const [displayed, setDisplayed]   = useState('');
-  const [deleting, setDeleting]     = useState(false);
+  const [displayed, setDisplayed] = useState('');
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     const role = ROLES[roleIndex];
@@ -61,7 +62,6 @@ export default function Hero() {
               <span className="hl">MERN Stack</span> &amp;{' '}
               <span className="hl">AI Engineering</span>.
               Currently delivering full-stack solutions for{' '}
-              <span className="hl">UK-based clients</span> &amp;{' '}
               <span className="hl">WEBSCARE Technologies</span>.
             </p>
 
@@ -88,7 +88,7 @@ export default function Hero() {
             <div className="hud-ring"></div>
 
             <div className="profile-img-wrap">
-              <img src="Ali.jpeg" alt="Ali Raza Khan" className="profile-img" />
+              <img src="/Ali.jpg" alt="Ali Raza Khan" className="profile-img" />
             </div>
 
             {/* Scan overlay */}
